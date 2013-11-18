@@ -1,0 +1,80 @@
+!SESSION 2013-11-17 17:35:38.554 -----------------------------------------------
+eclipse.buildId=3.4.0.201310051614-RELEASE-e43
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.egit.ui 2 0 2013-11-17 17:38:15.655
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2013-11-17 17:38:15.657
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\bmgorski'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2013-11-17 17:38:29.982
+!MESSAGE Error injecting: org.apache.maven.index.DefaultNexusIndexer
+
+!ENTRY org.eclipse.core.jobs 4 2 2013-11-17 17:38:29.985
+!MESSAGE An internal error occurred during: "Repository registry initialization".
+!STACK 0
+org.eclipse.m2e.core.internal.NoSuchComponentException: org.codehaus.plexus.component.repository.exception.ComponentLookupException: com.google.inject.ProvisionException: Guice provision errors:
+
+1) No implementation for org.apache.maven.index.IndexerEngine was bound.
+  while locating org.apache.maven.index.DefaultNexusIndexer
+  at ClassRealm[plexus.core, parent: null]
+  at ClassRealm[plexus.core, parent: null]
+  while locating org.apache.maven.index.NexusIndexer
+
+1 error
+      role: org.apache.maven.index.NexusIndexer
+  roleHint: 
+	at org.eclipse.m2e.core.internal.MavenPluginActivator.lookup(MavenPluginActivator.java:360)
+	at org.eclipse.m2e.core.internal.MavenPluginActivator.getNexusIndexer(MavenPluginActivator.java:414)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.getIndexer(NexusIndexManager.java:698)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.getIndexingContext(NexusIndexManager.java:692)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.setIndexDetails(NexusIndexManager.java:915)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.repositoryAdded(NexusIndexManager.java:874)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.addRepository(RepositoryRegistry.java:163)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:236)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:47)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.codehaus.plexus.component.repository.exception.ComponentLookupException: com.google.inject.ProvisionException: Guice provision errors:
+
+1) No implementation for org.apache.maven.index.IndexerEngine was bound.
+  while locating org.apache.maven.index.DefaultNexusIndexer
+  at ClassRealm[plexus.core, parent: null]
+  at ClassRealm[plexus.core, parent: null]
+  while locating org.apache.maven.index.NexusIndexer
+
+1 error
+      role: org.apache.maven.index.NexusIndexer
+  roleHint: 
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:257)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:245)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:239)
+	at org.eclipse.m2e.core.internal.MavenPluginActivator.lookup(MavenPluginActivator.java:358)
+	... 9 more
+Caused by: com.google.inject.ProvisionException: Guice provision errors:
+
+1) No implementation for org.apache.maven.index.IndexerEngine was bound.
+  while locating org.apache.maven.index.DefaultNexusIndexer
+  at ClassRealm[plexus.core, parent: null]
+  at ClassRealm[plexus.core, parent: null]
+  while locating org.apache.maven.index.NexusIndexer
+
+1 error
+	at com.google.inject.internal.InjectorImpl$3.get(InjectorImpl.java:974)
+	at org.sonatype.guice.bean.locators.LazyBeanEntry.getValue(LazyBeanEntry.java:83)
+	at org.sonatype.guice.plexus.locators.LazyPlexusBean.getValue(LazyPlexusBean.java:49)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:253)
+	... 12 more
