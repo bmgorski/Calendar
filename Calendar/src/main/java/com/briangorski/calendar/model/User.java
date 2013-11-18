@@ -1,17 +1,14 @@
 package com.briangorski.calendar.model;
 
+import java.util.Set;
+
 public class User {
-	private long id;
+	private long userID;
 	private String firstName;
 	private String lastName;
 	private String username;
+	private Set<Event> events;
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -29,5 +26,17 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public long getUserID() {
+		return userID;
+	}
+	public void setUserID(long userID) {
+		this.userID = userID;
+	}
+	public Set<Event> getEvents() {
+		return events;
+	}
+	public void setEvents(Set<Event> events) {
+		this.events = events;
 	}
 }
