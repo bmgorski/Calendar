@@ -1,11 +1,14 @@
 package com.briangorski.calendar.model;
 
 import java.util.Date;
+import java.util.Set;
 
 public class DefaultTask implements Task {
 	private Long taskID;
 	private Date dueDate;
 	private String description;
+	private String type;
+	private Set<User> users;
 
 	@Override
 	public void setTaskID(Long taskID) {
@@ -38,7 +41,22 @@ public class DefaultTask implements Task {
 	}
 
 	@Override
-	public String type() {
-		return "Default Type";
+	public String getType() {
+		return this.type;
+	}
+
+	@Override
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public Set<User> getUsers() {
+		return this.users;
+	}
+
+	@Override
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 }

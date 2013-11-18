@@ -8,6 +8,7 @@ public class User {
 	private String lastName;
 	private String username;
 	private Set<Event> events;
+	private Set<Group> groups;
 	
 	public String getFirstName() {
 		return firstName;
@@ -38,5 +39,11 @@ public class User {
 	}
 	public void setEvents(Set<Event> events) {
 		this.events = events;
+	}
+	public Set<Group> getGroups() {
+		return groups;
+	}
+	public void setGroups(Set<Group> groups) {
+		this.groups = groups;
 	}
 }

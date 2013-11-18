@@ -21,9 +21,14 @@
 			<column name="USER_NAME" length="25" not-null="true" unique="true" />
 		</property>
 		
-		<set name="User" table="user_event">
+		<set name="events" table="user_event">
 			<key column="USER_ID" />
-            <many-to-many column="USER_ID" class="com.briangorski.calendar.model.User" />
+            <many-to-many column="EVENT_ID" class="com.briangorski.calendar.model.Event" />
+		</set>
+		
+		<set name="groups" table="user_group">
+			<key column="USER_ID" />
+            <many-to-many column="GROUP_ID" class="com.briangorski.calendar.model.Group" />
 		</set>
 	</class>
 </hibernate-mapping>

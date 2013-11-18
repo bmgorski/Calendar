@@ -1,6 +1,8 @@
 package com.briangorski.calendar.model;
 
 public interface NotificationType {
-	String type();
-	void SendMessage();
+	Long getType();
+	void setType(Long type);
+	
+	void sendMessage();
 }

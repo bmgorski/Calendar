@@ -8,8 +8,8 @@ public class Event {
 	private Date startTime;
 	private Date endTime;
 	private String description;
+	private Set<Notification> notifications;
 	private Set<User> users;
-	private Set<NotificationType> notificationTypes;
 	
 	public Date getStartTime() {
 		return startTime;
@@ -35,16 +35,16 @@ public class Event {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
-	public Set<NotificationType> getNotificationTypes() {
-		return notificationTypes;
-	}
-	public void setNotificationTypes(Set<NotificationType> notificationTypes) {
-		this.notificationTypes = notificationTypes;
-	}
 	public Long getEventID() {
 		return eventID;
 	}
 	public void setEventID(Long eventID) {
 		this.eventID = eventID;
+	}
+	public Set<Notification> getNotifications() {
+		return notifications;
+	}
+	public void setNotifications(Set<Notification> notifications) {
+		this.notifications = notifications;
 	}
 }

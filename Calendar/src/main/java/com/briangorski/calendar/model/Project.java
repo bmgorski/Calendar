@@ -4,8 +4,8 @@ import java.util.Set;
 
 public class Project {
 	private long projectID;
-	private Group group;
 	private String description;
+	private Group group;
 	private Set<Event> events;
 	
 	public long getProjectID() {
