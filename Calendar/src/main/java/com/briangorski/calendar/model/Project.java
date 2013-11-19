@@ -4,6 +4,7 @@ import java.util.Set;
 
 public class Project {
 	private long projectID;
+	private String name;
 	private String description;
 	private Group group;
 	private Set<Event> events;
@@ -31,5 +32,11 @@ public class Project {
 	}
 	public void setEvents(Set<Event> events) {
 		this.events = events;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

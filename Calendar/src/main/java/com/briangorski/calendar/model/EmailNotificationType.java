@@ -1,21 +1,13 @@
 package com.briangorski.calendar.model;
 
-public class EmailNotificationType implements NotificationType {
-	private Long type = 1l;
+import com.briangorski.calendar.model.abstracts.NotificationType;
 
+public class EmailNotificationType extends NotificationType {
 	@Override
-	public Long getType() {
-		return this.type;
+	public Long getNotificationTypeID() {
+		return 1l;
 	}
-
+	
 	@Override
-	public void setType(Long type) {
-		
-	}
-
-	@Override
-	public void sendMessage() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void sendMessage() {}
 }
