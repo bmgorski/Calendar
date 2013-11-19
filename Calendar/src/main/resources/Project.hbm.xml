@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.briangorski.calendar.model.Project" table="project" >
+		<id name="projectID" type="java.lang.Long">
+			<column name="PROJECT_ID" unique="true"/>
+			<generator class="native" />
+		</id>
+		
+		<property name="name" type="string">
+			<column name="NAME" length="50" not-null="true" unique="true" />
+		</property>
+
+		<property name="description" type="string">
+			<column name="DESCRIPTION" length="4000" not-null="true" unique="true" />
+		</property>
+		
+		<one-to-one name="group" class="com.briangorski.calendar.model.Group" foreign-key="GROUP_ID"></one-to-one>
+	
+		<set name="events" table="project_event">
+			<key column="PROJECT_ID" />
+            <many-to-many column="EVENT_ID" class="com.briangorski.calendar.model.Event" />
+		</set>
+	</class>
+</hibernate-mapping>

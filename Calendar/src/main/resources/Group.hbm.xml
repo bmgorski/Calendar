@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.briangorski.calendar.model.Group" table="group" >
+		<id name="groupID" type="java.lang.Long">
+			<column name="GROUP_ID" unique="true"/>
+			<generator class="native" />
+		</id>
+		
+		<property name="name" type="string">
+			<column name="NAME" length="50" not-null="true" unique="true" />
+		</property>
+
+		<property name="description" type="string">
+			<column name="DESCRIPTION" length="4000" not-null="true" unique="true" />
+		</property>
+		
+		<set name="users" table="user_event">
+			<key column="EVENT_ID" />
+            <many-to-many column="USER_ID" class="com.briangorski.calendar.model.User" />
+		</set>
+	</class>
+</hibernate-mapping>
