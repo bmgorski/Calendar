@@ -7,6 +7,7 @@ public class Group {
 	private String name;
 	private String description;
 	private Set<User> users;
+	private Set<Project> projects;
 	
 	public long getGroupID() {
 		return groupID;
@@ -31,5 +32,11 @@ public class Group {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Set<Project> getProjects() {
+		return projects;
+	}
+	public void setProjects(Set<Project> projects) {
+		this.projects = projects;
 	}
 }

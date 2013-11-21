@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
-<hibernate-mapping>
-	<class name="com.briangorski.calendar.model.abstracts.NotificationType" table="notification_type" discriminator-value="NT">
-		<id name="notificationID" type="java.lang.Long">
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.briangorski.calendar.model">
+	<class name="NotificationType" table="notification_type" discriminator-value="NT">
+		<id name="notificationTypeID" type="java.lang.Long">
 			<column name="NOTIFICATION_ID" unique="true"/>
 			<generator class="assigned" />
 		</id>
 		
 		<discriminator column="DISCRIMINATOR" type="string" />
 		
-		<subclass name="com.briangorski.calendar.model.EmailNotificationType" extends="NotificationType" discriminator-value="ENT">
+		<subclass name="EmailNotificationType" extends="NotificationType" discriminator-value="ENT">
         
         </subclass>
 	</class>

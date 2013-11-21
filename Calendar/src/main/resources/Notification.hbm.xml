@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
-<hibernate-mapping>
-	<class name="com.briangorski.calendar.model.Notification" table="notification" >
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping package="com.briangorski.calendar.model">
+	<class name="Notification" table="notification" >
 		<id name="notificationID" type="java.lang.Long">
 			<column name="NOTIFICATION_ID" unique="true"/>
 			<generator class="native" />
@@ -21,6 +21,6 @@
 			<column name="MESSAGE" length="4000" not-null="true" unique="true" />
 		</property>
 		
-		<one-to-one name="notificationType" cascade="save-update" class="com.briangorski.calendar.model.interfaces.NotificationType"></one-to-one>
+		<one-to-one name="notificationType" cascade="save-update" class="NotificationType"></one-to-one>
 	</class>
 </hibernate-mapping>

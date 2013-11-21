@@ -1,4 +1,4 @@
-package com.briangorski.calendar.model.abstracts;
+package com.briangorski.calendar.model;
 
 public abstract class NotificationType {
 	private Long notificationTypeID;

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
-<hibernate-mapping>
-	<class name="com.briangorski.calendar.model.abstracts.Task" table="task" discriminator-value="T" >
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.briangorski.calendar.model">
+	<class name="Task" table="task" discriminator-value="T" >
 		<id name="taskID" type="java.lang.Long">
 			<column name="TASK_ID" unique="true"/>
 			<generator class="native" />
@@ -30,7 +30,7 @@
             <one-to-many class="com.briangorski.calendar.model.User" />
         </set>
         
-        <subclass name="com.briangorski.calendar.model.DefaultTask" extends="Task" discriminator-value="DT">
+        <subclass name="DefaultTask" extends="Task" discriminator-value="DT">
         
         </subclass>
 	</class>

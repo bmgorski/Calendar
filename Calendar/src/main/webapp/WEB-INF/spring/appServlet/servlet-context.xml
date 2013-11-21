@@ -33,7 +33,19 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="packagesToScan"
-			value=", com.briangorski.gametracker.dao.impl" />
+			value="com.briangorski.calendar.dao.impl" />
+			
+		<beans:property name="mappingLocations">
+            <beans:list>
+                <beans:value>classpath:Event.hbm.xml</beans:value>
+                <beans:value>classpath:Group.hbm.xml</beans:value>
+                <beans:value>classpath:Notification.hbm.xml</beans:value>
+                <beans:value>classpath:NotificationType.hbm.xml</beans:value>
+                <beans:value>classpath:Project.hbm.xml</beans:value>
+                <beans:value>classpath:Task.hbm.xml</beans:value>
+                <beans:value>classpath:User.hbm.xml</beans:value>
+            </beans:list>
+        </beans:property>
 		<beans:property name="hibernateProperties">
 			<beans:props>
 				<beans:prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</beans:prop>

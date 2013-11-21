@@ -1,9 +1,7 @@
-package com.briangorski.calendar.model.abstracts;
+package com.briangorski.calendar.model;
 
 import java.util.Date;
 import java.util.Set;
-
-import com.briangorski.calendar.model.User;
 
 public abstract class Task {
 	private long taskID;

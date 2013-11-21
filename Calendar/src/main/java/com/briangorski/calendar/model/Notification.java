@@ -2,8 +2,6 @@ package com.briangorski.calendar.model;
 
 import java.util.Date;
 
-import com.briangorski.calendar.model.abstracts.NotificationType;
-
 public class Notification {
 	private long notificationID;
 	private Date notificationTime;

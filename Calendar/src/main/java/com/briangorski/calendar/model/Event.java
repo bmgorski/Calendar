@@ -10,6 +10,8 @@ public class Event {
 	private String description;
 	private Set<Notification> notifications;
 	private Set<User> users;
+	private Set<Task> tasks;
+	private Set<Integer> accepted;
 	
 	public Date getStartTime() {
 		return startTime;
@@ -46,5 +48,17 @@ public class Event {
 	}
 	public void setNotifications(Set<Notification> notifications) {
 		this.notifications = notifications;
+	}
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+	public Set<Integer> getAccepted() {
+		return accepted;
+	}
+	public void setAccepted(Set<Integer> accepted) {
+		this.accepted = accepted;
 	}
 }
