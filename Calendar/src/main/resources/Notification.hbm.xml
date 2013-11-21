@@ -1,26 +1,23 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.briangorski.calendar.model">
-	<class name="Notification" table="notification" >
+	<class name="Notification" table="notification">
 		<id name="notificationID" type="java.lang.Long">
-			<column name="NOTIFICATION_ID" unique="true"/>
+			<column name="NOTIFICATION_ID" unique="true" />
 			<generator class="native" />
 		</id>
-		
-		<property name="notificationTime" type="timestamp">
+		<property generated="never" lazy="false" name="notificationTime"
+			type="timestamp">
 			<column name="NOTIFICATION_TIME" not-null="true" unique="true" />
 		</property>
-		
-		<property name="title" type="string">
-			<column name="TITLE" length="50" not-null="true" unique="true" />
+		<property generated="never" lazy="false" name="title" type="string">
+			<column length="50" name="TITLE" not-null="true" unique="true" />
 		</property>
-
-		<property name="message" type="string">
-			<column name="MESSAGE" length="4000" not-null="true" unique="true" />
+		<property generated="never" lazy="false" name="message" type="string">
+			<column length="4000" name="MESSAGE" not-null="true" unique="true" />
 		</property>
-		
-		<one-to-one name="notificationType" cascade="save-update" class="NotificationType"></one-to-one>
+		<one-to-one cascade="save-update" class="NotificationType"
+			name="notificationType" />
 	</class>
 </hibernate-mapping>
