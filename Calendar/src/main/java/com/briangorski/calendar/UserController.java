@@ -13,11 +13,10 @@ public class UserController extends com.briangorski.calendar.Controller {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/user/edit", method = RequestMethod.GET)
-	public String home(Model model) {
-
+	@RequestMapping(value = "/user/new", method = RequestMethod.GET)
+	public String newUser(Model model) {
+		model.addAttribute("type", "add");
 		
-		return "home";
+		return "user";
 	}
-	
 }
