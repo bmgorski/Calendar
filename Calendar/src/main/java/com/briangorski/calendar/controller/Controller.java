@@ -1,8 +1,9 @@
-package com.briangorski.calendar;
+package com.briangorski.calendar.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import com.briangorski.calendar.dao.UserManager;
 
@@ -11,4 +12,5 @@ public class Controller {
 	
 	@Autowired
 	UserManager _userManager;
+	
 }

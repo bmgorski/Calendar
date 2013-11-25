@@ -39,6 +39,8 @@ public interface UserDAO {
 	 * @return the user by id
 	 */
 	User getUserByID(long userID);
+	
+	User getUserByUsername(String username);
 
 	/**
 	 * Gets the users.

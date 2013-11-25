@@ -1,5 +1,21 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Group Calendar</title>
 
+  <!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/foundation/css/normalize.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/foundation/css/foundation.css" />
 
+  <script src="${pageContext.request.contextPath}/resources/foundation/js/vendor/custom.modernizr.js"></script>
+  
   <!-- body content here -->
 
   <script>
@@ -25,5 +41,17 @@
   <script>
     $(document).foundation();
   </script>
-</body>
-</html>
+
+</head>
+<body>
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name"><h1><a href="#nogo">Group Calendar</a></h1></li>
+  </ul>
+  
+  <section class="top-bar-section">
+    <ul class="right">
+    	<li><a href="<%=request.getContextPath()%>/user/login">Login</a></li>
+    </ul>
+  </section>
+</nav>

@@ -22,6 +22,14 @@ public class UserManagerImpl implements UserManager {
 	@Autowired
 	private UserDAO userDAO;
 
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.briangorski.usertracker.dao.UserManager#insertUser(com.briangorski.usertracker.model.User)
 	 */
@@ -65,6 +73,12 @@ public class UserManagerImpl implements UserManager {
 	@Transactional
 	public List<User> getUsers(Boolean ownershipType) {
 		return userDAO.getUsers(ownershipType);
+	}
+
+	@Override
+	@Transactional
+	public User getUserByUsername(String username) {
+		return userDAO.getUserByUsername(username);
 	}
 	
 }

@@ -19,8 +19,7 @@
 			foreign-key="GROUP_ID" name="group" />
 		<set name="events" sort="unsorted" table="project_events">
 			<key column="PROJECT_ID" />
-			<one-to-many class="com.briangorski.calendar.model.Event"
-				entity-name="events" />
+			<one-to-many class="com.briangorski.calendar.model.Event" />
 		</set>
 	</class>
 </hibernate-mapping>

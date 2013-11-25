@@ -38,7 +38,8 @@ public interface UserManager {
 	 * @return the user by id
 	 */
 	User getUserByID(long userID);
-
+	
+	User getUserByUsername(String username);
 	/**
 	 * Gets the users.
 	 *

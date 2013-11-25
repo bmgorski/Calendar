@@ -2,10 +2,20 @@ package com.briangorski.calendar.model;
 
 import java.util.Set;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class User {
 	private long userID;
+	@NotEmpty
+	@Size(min = 4, max = 4000)
 	private String firstName;
+	@NotEmpty
+	@Size(min = 4, max = 4000)
 	private String lastName;
+	@NotEmpty
+	@Size(min = 4, max = 4000)
 	private String username;
 	private Set<Event> events;
 	private Set<Group> groups;
