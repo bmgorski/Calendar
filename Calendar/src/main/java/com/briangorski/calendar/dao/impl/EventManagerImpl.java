@@ -3,13 +3,17 @@ package com.briangorski.calendar.dao.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import com.briangorski.calendar.dao.EventDAO;
 import com.briangorski.calendar.dao.EventManager;
 import com.briangorski.calendar.model.Event;
 import com.briangorski.calendar.model.User;
 
+@Repository
 public class EventManagerImpl implements EventManager{
 	
 	@Autowired
@@ -17,8 +21,13 @@ public class EventManagerImpl implements EventManager{
 	
 	@Override
 	@Transactional
-	public void insertEvent(Event event) {
+	public MultiValueMap<Object, Object> insertEvent(Event event) {
 		eventDAO.insertEvent(event);
+		
+		MultiValueMap<Object, Object> map = new LinkedMultiValueMap<Object, Object>();
+		map.add("event", event);
+		
+		return map;
 	}
 
 	@Override
@@ -35,8 +44,8 @@ public class EventManagerImpl implements EventManager{
 
 	@Override
 	@Transactional
-	public User getEventByID(long userID) {
-		return eventDAO.getEventByID(userID);
+	public User getEventByID(long eventID) {
+		return eventDAO.getEventByID(eventID);
 	}
 
 	@Override

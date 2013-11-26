@@ -1,17 +1,67 @@
 package com.briangorski.calendar.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.briangorski.calendar.model.Event;
+import com.briangorski.calendar.model.User;
 
 @Controller
 public class CalendarController extends com.briangorski.calendar.controller.Controller{
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
-	public String home(Model model) {
-		
-		
-		
+	public String calendar() {
 		return "calendar";
 	}
+	
+	@RequestMapping(value = "/calendar/user/events", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Event> getUserEvents() {
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		return _eventManager.getEventsByUser(user);
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = "/calendar/user/event/add", method = RequestMethod.POST)
+	@ResponseBody
+    public ResponseEntity addUserEvent(@Valid @RequestBody Event event, Errors errors) {
+        if (errors.hasErrors()) {
+            return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
+        }
+        
+        return new ResponseEntity(_eventManager.insertEvent(event), HttpStatus.CREATED);
+    }
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = "/calendar/user/event/update", method = RequestMethod.POST)
+	@ResponseBody
+    public ResponseEntity updateUserEvent(@Valid @RequestBody Event event, Errors errors) {
+        if (errors.hasErrors()) {
+            return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
+        }
+        
+        return new ResponseEntity(_eventManager.insertEvent(event), HttpStatus.CREATED);
+    }
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = "/calendar/user/event/update", method = RequestMethod.POST)
+	@ResponseBody
+    public ResponseEntity deleteUserEvent(@Valid @RequestBody Event event, Errors errors) {
+        if (errors.hasErrors()) {
+            return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
+        }
+        
+        return new ResponseEntity(_eventManager.insertEvent(event), HttpStatus.CREATED);
+    }
 }
