@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.briangorski.calendar.dao.EventDAO;
-import com.briangorski.calendar.dao.EventManager;
 import com.briangorski.calendar.model.Event;
 import com.briangorski.calendar.model.User;
 
@@ -53,8 +52,10 @@ public class EventDAOImpl implements EventDAO{
 	@Override
 	public List<Event> getEventsByUser(User user) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
-				"from Event where eventID = :eventID");
-		query.setParameter("user", user);
+				"select e from Event e " +
+                "join e.users u " +
+                "where u.userID = (:userID)");
+		query.setParameter("userID", user.getUserID());
 
 		return query.list();
 	}

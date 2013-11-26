@@ -36,7 +36,7 @@ public class User {
 		return username;
 	}
 	public void setUsername(String username) {
-		this.username = username;
+		this.username = username.toLowerCase();
 	}
 	public long getUserID() {
 		return userID;
