@@ -19,7 +19,14 @@ import com.briangorski.calendar.model.User;
 public class AuthController extends com.briangorski.calendar.controller.Controller {	
 	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
 	public String loginUser(@ModelAttribute("command") User user, BindingResult result, Model model, HttpServletRequest request) {
-		model.addAttribute("edit", true);
+		model.addAttribute("login", true);
+		user = (User)request.getSession().getAttribute("user");
+		return "login";
+	}
+	
+	@RequestMapping(value = "/user/login/error", method = RequestMethod.GET)
+	public String loginUserError(@ModelAttribute("command") User user, BindingResult result, Model model, HttpServletRequest request) {
+		model.addAttribute("errorLogin", true);
 		user = (User)request.getSession().getAttribute("user");
 		return "login";
 	}

@@ -18,11 +18,9 @@
   
   <!-- body content here -->
 
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? '${pageContext.request.contextPath}/resources/foundation/js/vendor/zepto' : '${pageContext.request.contextPath}/resources/foundation/js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
+
+  <script src="${pageContext.request.contextPath}/resources/foundation/js/vendor/jquery.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/foundation/js/foundation/foundation.js"></script>
   <script src="${pageContext.request.contextPath}/resources/foundation/js/foundation/foundation.alerts.js"></script>
   <script src="${pageContext.request.contextPath}/resources/foundation/js/foundation/foundation.clearing.js"></script>
@@ -41,7 +39,9 @@
   <script>
     $(document).foundation();
   </script>
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css"/>
 </head>
 <body>
 <nav class="top-bar">

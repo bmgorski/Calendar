@@ -33,19 +33,22 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication authentication)
 			throws AuthenticationException {
-		System.out.println(_userManager);
-
-		User user = _userManager.getUserByUsername(authentication.getName());
-		logger.info("User: " + user);
 		
-		if (user != null) {
-			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-			authorities.add(new SimpleGrantedAuthority("USER_ROLE"));
-			UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-					authentication.getName(), authentication.getCredentials(),
-					authorities);
-			return token;
-		} else {
+		try{
+			User user = _userManager.getUserByUsername(authentication.getName());
+			
+			if (user != null) {
+				List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+				authorities.add(new SimpleGrantedAuthority("USER_ROLE"));
+				UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+						authentication.getName(), authentication.getCredentials(),
+						authorities);
+				return token;
+			} else {
+				return null;
+			}
+		}
+		catch(Exception e){
 			return null;
 		}
 	}
