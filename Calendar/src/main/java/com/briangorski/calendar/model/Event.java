@@ -1,6 +1,7 @@
 package com.briangorski.calendar.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Event {
@@ -9,7 +10,8 @@ public class Event {
 	private Date endTime;
 	private String description;
 	private Set<Notification> notifications;
-	private Set<User> users;
+	private User owner;
+	private Set<User> users = new HashSet<User>();
 	private Set<Task> tasks;
 	private Set<Integer> accepted;
 	
@@ -60,5 +62,11 @@ public class Event {
 	}
 	public void setAccepted(Set<Integer> accepted) {
 		this.accepted = accepted;
+	}
+	public User getOwner() {
+		return owner;
+	}
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 }

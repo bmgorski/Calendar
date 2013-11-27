@@ -21,6 +21,8 @@
 			<column name="DESCRIPTION" length="4000" not-null="true" unique="true" />
 		</property>
 		
+		<one-to-one name="owner" class="com.briangorski.calendar.model.User"></one-to-one>
+		
 		<set name="notifications" table="event_notification">
 			<key column="EVENT_ID" />
             <many-to-many column="NOTIFICATION_ID" class="com.briangorski.calendar.model.Notification" />

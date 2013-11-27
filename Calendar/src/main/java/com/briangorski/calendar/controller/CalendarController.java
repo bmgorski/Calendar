@@ -36,32 +36,48 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
 	@RequestMapping(value = "/calendar/user/event/add", method = RequestMethod.POST)
 	@ResponseBody
     public ResponseEntity addUserEvent(@Valid @RequestBody Event event, Errors errors) {
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
         if (errors.hasErrors()) {
             return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
         }
         
-        return new ResponseEntity(_eventManager.insertEvent(event), HttpStatus.CREATED);
+        event.getUsers().add(user);
+        
+        _eventManager.insertEvent(event);
+        
+        return new ResponseEntity("success", HttpStatus.CREATED);
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/calendar/user/event/update", method = RequestMethod.POST)
 	@ResponseBody
     public ResponseEntity updateUserEvent(@Valid @RequestBody Event event, Errors errors) {
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (errors.hasErrors()) {
             return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
         }
         
-        return new ResponseEntity(_eventManager.insertEvent(event), HttpStatus.CREATED);
+        event.getUsers().add(user);
+        
+        _eventManager.updateEvent(event);
+        
+        return new ResponseEntity("success", HttpStatus.CREATED);
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/calendar/user/event/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/calendar/user/event/delete", method = RequestMethod.POST)
 	@ResponseBody
     public ResponseEntity deleteUserEvent(@Valid @RequestBody Event event, Errors errors) {
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
         if (errors.hasErrors()) {
             return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
         }
         
-        return new ResponseEntity(_eventManager.insertEvent(event), HttpStatus.CREATED);
+        event.getUsers().add(user);
+        _eventManager.deleteEvent(event);
+        
+        return new ResponseEntity("success", HttpStatus.CREATED);
     }
 }
