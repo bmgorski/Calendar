@@ -19,12 +19,12 @@ import com.briangorski.calendar.model.User;
 
 @Controller
 public class CalendarController extends com.briangorski.calendar.controller.Controller{
-	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String calendar() {
 		return "calendar";
 	}
 	
-	@RequestMapping(value = "/calendar/user/events", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/events", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Event> getUserEvents() {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -33,7 +33,7 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/calendar/user/event/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/event/add", method = RequestMethod.POST)
 	@ResponseBody
     public ResponseEntity addUserEvent(@Valid @RequestBody Event event, Errors errors) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -50,7 +50,7 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/calendar/user/event/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/event/update", method = RequestMethod.POST)
 	@ResponseBody
     public ResponseEntity updateUserEvent(@Valid @RequestBody Event event, Errors errors) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -66,7 +66,7 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/calendar/user/event/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/event/delete", method = RequestMethod.POST)
 	@ResponseBody
     public ResponseEntity deleteUserEvent(@Valid @RequestBody Event event, Errors errors) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
