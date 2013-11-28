@@ -8,7 +8,9 @@ public class Event {
 	private Long eventID;
 	private Date startTime;
 	private Date endTime;
+	private String title;
 	private String description;
+	private boolean allDayEvent = false;
 	private Set<Notification> notifications;
 	private User owner;
 	private Set<User> users = new HashSet<User>();
@@ -68,5 +70,17 @@ public class Event {
 	}
 	public void setOwner(User owner) {
 		this.owner = owner;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public boolean isAllDayEvent() {
+		return allDayEvent;
+	}
+	public void setAllDayEvent(boolean allDayEvent) {
+		this.allDayEvent = allDayEvent;
 	}
 }

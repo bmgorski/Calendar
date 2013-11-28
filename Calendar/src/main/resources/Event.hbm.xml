@@ -17,8 +17,16 @@
 			<column name="END_TIME" not-null="true" unique="true" />
 		</property>
 
+		<property name="title" type="string">
+			<column name="TITLE" length="4000" not-null="true" />
+		</property>
+
 		<property name="description" type="string">
-			<column name="DESCRIPTION" length="4000" not-null="true" unique="true" />
+			<column name="DESCRIPTION" length="4000" not-null="false" />
+		</property>
+		
+		<property name="allDayEvent">
+			<column name="ALL_DAY_EVENT" not-null="true" />
 		</property>
 		
 		<one-to-one name="owner" class="com.briangorski.calendar.model.User"></one-to-one>

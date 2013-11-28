@@ -1,12 +1,18 @@
 package com.briangorski.calendar.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7130814009429852942L;
+	
 	private long userID;
 	@NotEmpty
 	@Size(min = 4, max = 4000)

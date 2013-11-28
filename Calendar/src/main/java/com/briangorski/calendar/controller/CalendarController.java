@@ -1,9 +1,14 @@
 package com.briangorski.calendar.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.briangorski.calendar.json.EventList;
 import com.briangorski.calendar.model.Event;
 import com.briangorski.calendar.model.User;
 
@@ -24,16 +30,20 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
 		return "calendar";
 	}
 	
-	@RequestMapping(value = "/user/events", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/events", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public List<Event> getUserEvents() {
+		HttpHeaders headers = new HttpHeaders();
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		headers.add("Content-Type", "application/json; charset=utf-8");
 		
-		return _eventManager.getEventsByUser(user);
+		List<Event> events = _eventManager.getEventsByUser(user);
+		
+		return events;
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/user/event/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/event/add", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
     public ResponseEntity addUserEvent(@Valid @RequestBody Event event, Errors errors) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -50,7 +60,7 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/user/event/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/event/update", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
     public ResponseEntity updateUserEvent(@Valid @RequestBody Event event, Errors errors) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -66,7 +76,7 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/user/event/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/event/delete", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
     public ResponseEntity deleteUserEvent(@Valid @RequestBody Event event, Errors errors) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
