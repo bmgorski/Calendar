@@ -1,14 +1,9 @@
 package com.briangorski.calendar.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.briangorski.calendar.json.EventList;
 import com.briangorski.calendar.model.Event;
 import com.briangorski.calendar.model.User;
 
@@ -33,13 +27,9 @@ public class CalendarController extends com.briangorski.calendar.controller.Cont
 	@RequestMapping(value = "/user/events", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public List<Event> getUserEvents() {
-		HttpHeaders headers = new HttpHeaders();
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		headers.add("Content-Type", "application/json; charset=utf-8");
 		
-		List<Event> events = _eventManager.getEventsByUser(user);
-		
-		return events;
+		return _eventManager.getEventsByUser(user);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

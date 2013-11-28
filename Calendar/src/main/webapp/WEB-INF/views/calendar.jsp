@@ -6,9 +6,15 @@
 	}
 </style>
 <script>
+	var defaultEvent = new Object(){
+		title = "Untitled Event";
+	}
 
+	function eventWindow(thisEvent){
+		thisEvent = $.extend( true, defaultEvent, thisEvent );
+	}
 	$(document).ready(function() {
-	
+		
 		var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
@@ -30,6 +36,7 @@
 				selectable: true,
 				selectHelper: true,
 				select: function(start, end, allDay) {
+					
 					var title = prompt('Event Title:');
 					if (title) {
 						calendar.fullCalendar('renderEvent',
@@ -50,8 +57,7 @@
                        url: '<%=request.getContextPath()%>' + '/user/events',
                        type: 'GET',
                        data: {
-                           custom_param1: 'something',
-                           custom_param2: 'somethingelse'
+                           month_load: 0,
                        },
                        error: function() {
                            alert('there was an error while fetching events!');
