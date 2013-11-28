@@ -6,12 +6,14 @@
 	}
 </style>
 <script>
-	var defaultEvent = new Object(){
-		title = "Untitled Event";
+	var defaultEvent ={
+		title : "Untitled Event"
 	}
 
 	function eventWindow(thisEvent){
 		thisEvent = $.extend( true, defaultEvent, thisEvent );
+
+		
 	}
 	$(document).ready(function() {
 		

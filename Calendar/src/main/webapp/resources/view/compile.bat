@@ -1,0 +1,1 @@
+cd %~dp0 & java -jar SoyToJsSrcCompiler.jar --outputPathFormat event.js --srcs event.soy & pause

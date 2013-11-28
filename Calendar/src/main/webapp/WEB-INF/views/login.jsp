@@ -1,5 +1,6 @@
 <%@ include file="parts/top.jsp"%>
-<form action="<%=request.getContextPath() %>/auth/login/proccess" method="POST">
+<form action="<%=request.getContextPath()%>/auth/login/proccess"
+	method="POST">
 	<fieldset>
 		<legend>Login</legend>
 
@@ -21,7 +22,6 @@
 		</script>
 	</fieldset>
 </form>
-
-<a href="<%=request.getContextPath() %>/user/new">Register Now</a>
+<a href="<%=request.getContextPath()%>/user/new">Register Now</a>
 
 <jsp:include page="parts/bottom.jsp" />
