@@ -54,11 +54,10 @@ public class EventDAOImpl implements EventDAO{
 	@Override
 	public List<Event> getEventsByUser(User user) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
-				"select e from Event e " +
-                "join e.users u " +
-                "where u.userID = (:userID)");
+				"from Event " +
+                "where owner = (:userID)");
 		query.setParameter("userID", user.getUserID());
-
+		
 		return query.list();
 	}
 

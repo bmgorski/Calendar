@@ -15,11 +15,6 @@
 			<column length="4000" name="DESCRIPTION" not-null="true"
 				unique="true" />
 		</property>
-		<set name="users" sort="unsorted" table="user_event">
-			<key column="GROUP_ID" />
-			<many-to-many class="com.briangorski.calendar.model.User"
-				column="USER_ID" unique="false" />
-		</set>
 		<set name="projects" sort="unsorted" table="project_events">
 			<key column="GROUP_ID" />
 			<one-to-many class="com.briangorski.calendar.model.Project" />

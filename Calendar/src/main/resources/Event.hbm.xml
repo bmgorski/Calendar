@@ -4,16 +4,16 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="com.briangorski.calendar.model.Event" table="event" >
-		<id name="eventID" type="java.lang.Long">
+		<id name="id" type="java.lang.Long">
 			<column name="EVENT_ID" unique="true"/>
 			<generator class="native" />
 		</id>
 		
-		<property name="startTime" type="timestamp">
+		<property name="start" type="timestamp">
 			<column name="START_TIME" not-null="true" unique="true" />
 		</property>
 		
-		<property name="endTime" type="timestamp">
+		<property name="end" type="timestamp">
 			<column name="END_TIME" not-null="true" unique="true" />
 		</property>
 
@@ -25,16 +25,13 @@
 			<column name="DESCRIPTION" length="4000" not-null="false" />
 		</property>
 		
-		<property name="allDayEvent">
+		<property name="allDay">
 			<column name="ALL_DAY_EVENT" not-null="true" />
 		</property>
 		
-		<one-to-one name="owner" class="com.briangorski.calendar.model.User"></one-to-one>
-		
-		<set name="notifications" table="event_notification">
-			<key column="EVENT_ID" />
-            <many-to-many column="NOTIFICATION_ID" class="com.briangorski.calendar.model.Notification" />
-		</set>
+		<many-to-one name="owner" class="com.briangorski.calendar.model.User" fetch="select" lazy="false">
+            <column name="USER_ID" not-null="true"   />
+        </many-to-one>
 		
 		<set name="users" table="user_event">
 			<key column="EVENT_ID" />

@@ -3,16 +3,19 @@
  * Says hello to the world.
  */
 {template .eventForm}
-	<form action="" method="POST" onSubmit="eventAjaxSave()">
+<div title="Event Information">
+	<form action="" method="POST">
 		<fieldset>
-			<div class="row">
+			<div class="">
 				<div class="large-12 columns">
-					<label for="title">Event Title</label> <input id="title" type="text"
+					<label for="title">Event Title</label> <input class="title" type="text"
 						name="title" />
 				</div>
-				<div class="large-12 columns">
-	
-					<input class="date" /> <select>
+				<div class="large-3 columns">
+					<input class="date startDate" type="text" name="startDate" />
+				</div>
+				<div class="large-2 columns">
+					<select class="startTime" name="startTime">
 						<option>12:00am</option>
 						<option>12:30am</option>
 						<option>1:00am</option>
@@ -62,11 +65,15 @@
 						<option>11:00pm</option>
 						<option>11:30pm</option>
 					</select>
-					
+				</div>
+				<div class="large-1 columns">
 					<span>to:</span>
-					<input class="date" />
-					
-					<select>
+				</div>
+				<div class="large-3 columns">
+					<input type="text" class="date endDate" name="endDate" />
+				</div>
+				<div class="large-2 columns">
+					<select  class="endTime" name="endTime">
 						<option>12:00am</option>
 						<option>12:30am</option>
 						<option>1:00am</option>
@@ -119,11 +126,17 @@
 				</div>
 			</div>
 			<div class="large-12 columns">
-				<textarea />
+				<label for="allday">All Day Event?</label>
+				<input type="checkbox" class="allday" name="allday" />
+			</div>
+			<div class="large-12 columns">
+				<label for="description">Description</label>
+				<textarea class="description" name="description" />
 			</div>
 			<div class="large-12 columns">
 				<input type="submit" class="button" value="Submit">
 			</div>
 		</fieldset>
 	</form>
+</div>
 {/template}

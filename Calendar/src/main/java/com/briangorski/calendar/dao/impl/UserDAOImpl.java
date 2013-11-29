@@ -1,6 +1,8 @@
 package com.briangorski.calendar.dao.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.briangorski.calendar.dao.UserDAO;
+import com.briangorski.calendar.model.Event;
 import com.briangorski.calendar.model.User;
 /**
  * The Class UserDAOImpl.
@@ -75,7 +78,26 @@ public class UserDAOImpl implements UserDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(
 				"from User where username = :username");
 		query.setParameter("username", username);
+		
+		User user = (User) query.list().get(0);
 
-		return (User) query.list().get(0);
+		System.out.println(user.getEvents().size());
+		
+		return user;
+	}
+	
+	@Override
+	public Set<Event> getUserEvents(String username) {
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"from User where username = :username");
+		query.setParameter("username", username);
+		
+		User user = (User) query.list().get(0);
+		
+		Set<Event> events = new HashSet<Event>();
+		
+		events.addAll(user.getEvents());
+		
+		return events;
 	}
 }

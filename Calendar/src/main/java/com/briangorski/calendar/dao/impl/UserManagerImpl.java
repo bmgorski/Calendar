@@ -1,6 +1,7 @@
 package com.briangorski.calendar.dao.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.briangorski.calendar.dao.UserDAO;
 import com.briangorski.calendar.dao.UserManager;
+import com.briangorski.calendar.model.Event;
 import com.briangorski.calendar.model.User;
 
 
@@ -71,6 +73,12 @@ public class UserManagerImpl implements UserManager {
 	@Transactional
 	public User getUserByUsername(String username) {
 		return userDAO.getUserByUsername(username);
+	}
+
+	@Override
+	@Transactional
+	public Set<Event> getUserEvents(String username) {
+		return userDAO.getUserEvents(username);
 	}
 	
 }

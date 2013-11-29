@@ -2,7 +2,9 @@ package com.briangorski.calendar.dao;
 
 
 import java.util.List;
+import java.util.Set;
 
+import com.briangorski.calendar.model.Event;
 import com.briangorski.calendar.model.User;
 
 /**
@@ -49,4 +51,6 @@ public interface UserDAO {
 	 * @return the users
 	 */
 	List<User> getUsers(Boolean ownershipType);
+
+	Set<Event> getUserEvents(String username);
 }

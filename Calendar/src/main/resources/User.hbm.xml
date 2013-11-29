@@ -20,14 +20,14 @@
 		<property name="username" type="string">
 			<column name="USER_NAME" length="25" not-null="true" unique="true" />
 		</property>
-		
-		<set name="events" table="user_event">
-			<key column="USER_ID" />
-            <many-to-many column="EVENT_ID" class="com.briangorski.calendar.model.Event" />
+        
+		<set name="events" table="user_event" inverse="true" lazy="false" fetch="select">
+			<key column="USER_ID" not-null="true"/>
+            <one-to-many class="com.briangorski.calendar.model.Event" />
 		</set>
 		
 		<set name="groups" table="user_group">
-			<key column="USER_ID" />
+			<key column="USER_ID" not-null="false" />
             <many-to-many column="GROUP_ID" class="com.briangorski.calendar.model.Group" />
 		</set>
 	</class>

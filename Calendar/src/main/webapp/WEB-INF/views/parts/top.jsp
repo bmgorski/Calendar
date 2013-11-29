@@ -42,6 +42,12 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css"/>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css"/>
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-darkness/jquery-ui.css">
+  
+  
+  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/view/soyutils.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/view/event.js"></script>
+  
 </head>
 <body>
 <nav class="top-bar">
